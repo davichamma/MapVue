@@ -9,8 +9,12 @@
 **(EN)**
 This Vue.js application provides an interactive map on the main page, utilizing the Google Maps API to search for countries and the REST Countries API to fetch detailed information about the searched countries. The application features a minimalist design and leverages Advanced Markers to display search results on the map, along with a SearchBox to enable users to search for specific locations. When a country is selected, the application retrieves and displays relevant information such as the country's name, flag, capital city, currency, language, and continent, enhancing the user experience with a seamless integration of map and data functionalities.
 
+This project uses the Vue Black Dashboard template, which is licensed under the Creative Tim License. The template has been used in accordance with the licensing terms and conditions, ensuring full compliance with intellectual property rights and regulations.
+
 **(PT-BR)**
 Esta aplicação Vue.js oferece um mapa interativo na página principal, utilizando a API do Google Maps para buscar países e a API REST Countries para obter informações detalhadas sobre os países pesquisados. A aplicação apresenta um design minimalista e utiliza Advanced Markers para exibir os resultados da pesquisa no mapa, juntamente com uma SearchBox que permite aos usuários buscar localidades específicas. Quando um país é selecionado, a aplicação recupera e exibe informações relevantes, como o nome do país, bandeira, capital, moeda, idioma e continente, aprimorando a experiência do usuário com uma integração perfeita entre funcionalidades de mapa e dados.
+
+Este projeto utiliza o template Vue Black Dashboard, que está licenciado sob a Licença Creative Tim. O template foi utilizado de acordo com os termos e condições de licenciamento, garantindo total conformidade com os direitos e regulamentos de propriedade intelectual.
 
 **Vue Black Dashboard** is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing. If you are looking for a tool to manage and visualize data about your business, this dashboard is the thing for you. It combines colors that are easy on the eye, spacious cards, beautiful typography, and graphics.
 
@@ -19,7 +23,6 @@ Esta aplicação Vue.js oferece um mapa interativo na página principal, utiliza
 Vue Black Dashboard features over 16 individual components, giving you the freedom of choosing and combining. This means that there are thousands of possible combinations. All components can take variations in color, that you can easily modify using SASS files. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
 We thought about everything, so this dashboard comes with 2 versions, Dark Mode and Light Mode.
 
-We are very excited to share this dashboard with you and we look forward to hearing your feedback!
 
 ## Table of Contents
 

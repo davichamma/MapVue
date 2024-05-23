@@ -4,6 +4,13 @@
 
 ![Product Gif](https://github.com/creativetimofficial/vue-black-dashboard/blob/live-demo/src/assets/demo/product-gif.gif?raw=true)
 
+**Harpia Tech - FrontEnd Developer test** 
+**(EN)**
+This Vue.js application provides an interactive map on the main page, utilizing the Google Maps API to search for countries and the REST Countries API to fetch detailed information about the searched countries. The application features a minimalist design and leverages Advanced Markers to display search results on the map, along with a SearchBox to enable users to search for specific locations. When a country is selected, the application retrieves and displays relevant information such as the country's name, flag, capital city, currency, language, and continent, enhancing the user experience with a seamless integration of map and data functionalities.
+
+**(PT-BR)**
+Esta aplicação Vue.js oferece um mapa interativo na página principal, utilizando a API do Google Maps para buscar países e a API REST Countries para obter informações detalhadas sobre os países pesquisados. A aplicação apresenta um design minimalista e utiliza Advanced Markers para exibir os resultados da pesquisa no mapa, juntamente com uma SearchBox que permite aos usuários buscar localidades específicas. Quando um país é selecionado, a aplicação recupera e exibe informações relevantes, como o nome do país, bandeira, capital, moeda, idioma e continente, aprimorando a experiência do usuário com uma integração perfeita entre funcionalidades de mapa e dados.
+
 **Vue Black Dashboard** is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing. If you are looking for a tool to manage and visualize data about your business, this dashboard is the thing for you. It combines colors that are easy on the eye, spacious cards, beautiful typography, and graphics.
 
 **Vue Black Dashboard** comes packed with all plugins that you might need inside a project and documentation on how to get started. It is light and easy to use, and also very powerful.
@@ -26,21 +33,9 @@ We are very excited to share this dashboard with you and we look forward to hear
 - [Licensing](#licensing)
 - [Useful Links](#useful-links)
 
-## Demo
-
-- [Start page](https://demos.creative-tim.com/vue-black-dashboard)
-- [User profile page](https://demos.creative-tim.com/vue-black-dashboard/#/profile)
-- [Tables page ](https://demos.creative-tim.com/vue-black-dashboard/#/table-list)
-- [Maps Page](https://demos.creative-tim.com/vue-black-dashboard/#/maps)
-- [Notifications page](https://demos.creative-tim.com//vue-black-dashboard/#/notifications)
-
-[View More](https://demos.creative-tim.com/vue-black-dashboard).
-
 ## Quick start
 
-- Clone the repo: `git clone (https://github.com/davichamma/MapVue)`.
-- [Download from Github](https://github.com/creativetimofficial/vue-black-dashboard/archive/master.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/vue-black-dashboard).
+- Clone the repo: `git clone https://github.com/davichamma/MapVue`.
 
 ## Documentation
 

@@ -38,7 +38,7 @@ We are very excited to share this dashboard with you and we look forward to hear
 
 ## Quick start
 
-- Clone the repo: `git clone https://github.com/creativetimofficial/vue-black-dashboard.git`.
+- Clone the repo: `git clone (https://github.com/davichamma/MapVue)`.
 - [Download from Github](https://github.com/creativetimofficial/vue-black-dashboard/archive/master.zip).
 - [Download from Creative Tim](https://www.creative-tim.com/product/vue-black-dashboard).
 

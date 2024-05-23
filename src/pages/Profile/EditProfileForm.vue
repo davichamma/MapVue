@@ -24,7 +24,7 @@
         <base-input
           label="Email address"
           type="email"
-          placeholder="mike@email.com"
+          placeholder="example@email.com"
         >
         </base-input>
       </div>

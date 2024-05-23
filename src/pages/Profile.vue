@@ -19,21 +19,33 @@ export default {
   data() {
     return {
       model: {
-        company: "Creative Code Inc.",
-        email: "mike@email.com",
-        username: "michael23",
-        firstName: "Mike",
-        lastName: "Andrew",
-        address: "Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09",
-        city: "Melbourne",
-        country: "Australia",
+        company: "Carregando...",
+        email: "davichamma97@gmail.com",
+        username: "davichamma",
+        firstName: "Davi",
+        lastName: "Maciel",
+        address: "3 Abbey Rd., London NW8 9AY, Reino Unido",
+        city: "Campo Grande",
+        country: "Brasil",
         about:
-          "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.",
+          `Estagiário de TI
+Tribunal Regional Eleitoral de Mato Grosso do Sul
+* 2019/2021 * Campo Grande
+Estagiário - Web Developer
+Centro de Inovação SESI - Sistemas de Gestão em SST
+* 2022/2023 * Campo Grande
+Estagiário - Equipe de processos
+SESI - Gerência Executiva
+* 2023/Março 2023 * Campo Grande
+Analista de processos - Equipe de processos
+SESI - Gerência Executiva
+* Março 2023/Cargo atual * Campo Grande
+`,
       },
       user: {
-        fullName: "Mike Andrew",
+        fullName: "Davi Maciel",
         title: "Ceo/Co-Founder",
-        description: `Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...`,
+        description: ``,
       },
     };
   },

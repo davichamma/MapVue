@@ -20,6 +20,7 @@ export default {
     };
   },
   methods: {
+    // get country data from restcountries using the translation endpoint since we search mostrly in english
     async fetchCountryData(countryName) {
       try {
         const response = await axios.get(`https://restcountries.com/v3.1/translation/${countryName}`);
@@ -30,17 +31,20 @@ export default {
       }
     },
     addMarkers(countries, countryName) {
+      //use google's latlng method to get the info for placing the marker
       const bounds = new google.maps.LatLngBounds();
       countries.forEach(country => {
         const { latlng, capitalInfo, flags, name, capital, currencies, languages, continents } = country;
+        //handle missing information with an exit
         if (!capitalInfo || !capitalInfo.latlng) return;
-
+        //use google1s method to set the marker
         const marker = new google.maps.Marker({
+          //set the marker on the capital latlng
           position: { lat: capitalInfo.latlng[0], lng: capitalInfo.latlng[1] },
           map: this.map,
           title: name.common,
         });
-
+        //add a window to display the info about the searched country
         const infoWindow = new google.maps.InfoWindow({
           content: `
             <div style="color: black; padding: 10px; border-radius: 10px;">
@@ -54,7 +58,7 @@ export default {
             </div>
           `
         });
-
+        //open infoWindow whenever maker is clicked
         marker.addListener('click', () => {
           infoWindow.open(this.map, marker);
         });
@@ -63,21 +67,24 @@ export default {
       });
       this.map.fitBounds(bounds);
     },
+    //maps pai configuration
     initAutocomplete() {
       const myLatlng = new google.maps.LatLng(40.748817, -73.985428);
       const mapOptions = {
         zoom: 13,
         center: myLatlng,
         scrollwheel: false,
+        //pass mapID so we can use cloud style and get rid of annoying warnings
         mapId: '3b19c2a44e280068'
       };
+      //declare map
       this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+      //set searchbox
       const input = document.getElementById("pac-input");
       const searchBox = new google.maps.places.SearchBox(input);
 
       this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
-
+      // Adjust the search box bounds to map bounds
       this.map.addListener("bounds_changed", () => {
         searchBox.setBounds(this.map.getBounds());
       });
@@ -90,14 +97,14 @@ export default {
         if (places.length === 0) {
           return;
         }
-
+        // Clear out the old markers
         markers.forEach((marker) => {
           marker.setMap(null);
         });
         markers = [];
 
         const bounds = new google.maps.LatLngBounds();
-
+        // For each place, get the icon, name, and location
         for (const place of places) {
           if (!place.geometry || !place.geometry.location) {
             console.log("Returned place contains no geometry");
@@ -113,7 +120,7 @@ export default {
           };
 
           await this.fetchCountryData(place.name); 
-
+          // Adjust the map's viewport to fit the new place
           if (place.geometry.viewport) {
             bounds.union(place.geometry.viewport);
           } else {
@@ -136,6 +143,7 @@ export default {
   mounted() {
     this.$watch("$route", this.disableRTL, { immediate: true });
     this.$watch("$sidebar.showSidebar", this.toggleNavOpen);
+    // Initialize the autocomplete functionality when the component is mounted
     this.initAutocomplete(); 
   },
 };

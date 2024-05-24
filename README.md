@@ -22,11 +22,13 @@ Este projeto utiliza o template Vue Black Dashboard, que está licenciado sob a 
 - Clone the repo: `git clone https://github.com/davichamma/MapVue`.
 - Build your docker container: `docker-compose build`.
 - Run your docker container: `docker-compose up`.
+- Acess the application on http://localhost:8080/
 
 **(PT-BR)**
 - Clone o repositório: `git clone https://github.com/davichamma/MapVue`.
 - Contrua o docker container: `docker-compose build`.
 - Rode o docker container: `docker-compose up`.
+- Acesse a aplicação em http://localhost:8080/
 
 ## Documentation
 

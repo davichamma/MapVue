@@ -41,6 +41,9 @@ Within the download you'll find the following directories and files:
     |-- .babelrc
     |-- .env
     |-- .eslintrc
+    |-- Dockerfile
+    |-- docker-compose.yml
+    |-- nginx.conf
     |-- .gitattributes
     |-- .gitignore
     |-- CHANGELOG.md

@@ -24,17 +24,9 @@ export default {
       try {
         const response = await axios.get(`https://restcountries.com/v3.1/translation/${countryName}`);
         this.countryData = response.data;
-        console.log("🚀 ~ fetchCountryData ~ countryData:", this.countryData);
-        console.log("🚀 ~ fetchCountryData ~ response:", response.data);
         this.addMarkers(this.countryData, countryName);
       } catch (error) {
         console.error('Error fetching country data:', error);
-        this.$notify({
-          group: 'error',
-          type: 'error',
-          title: 'Erro',
-          text: `Não foi possível buscar as informações do país: ${countryName}`,
-        });
       }
     },
     addMarkers(countries, countryName) {
@@ -120,10 +112,7 @@ export default {
             scaledSize: new google.maps.Size(25, 25),
           };
 
-          
-          let countryName = place.name;
-          console.log(countryName);
-          await this.fetchCountryData(countryName); 
+          await this.fetchCountryData(place.name); 
 
           if (place.geometry.viewport) {
             bounds.union(place.geometry.viewport);

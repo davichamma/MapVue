@@ -1,10 +1,5 @@
 # Harpia Tech - FrontEnd Developer test with [Vue-Black Dashboard](https://demos.creative-tim.com/vue-black-dashboard)
 
-![version](https://img.shields.io/badge/version-1.1.3-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/black-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/black-dashboard/issues/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/black-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/black-dashboard/issues/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim-general/Lobby) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
-
-![Product Gif](https://github.com/creativetimofficial/vue-black-dashboard/blob/live-demo/src/assets/demo/product-gif.gif?raw=true)
-
-
 **(EN)**
 This Vue.js application provides an interactive map on the main page, utilizing the Google Maps API to search for countries and the REST Countries API to fetch detailed information about the searched countries. The application features a minimalist design and leverages Advanced Markers to display search results on the map, along with a SearchBox to enable users to search for specific locations. When a country is selected, the application retrieves and displays relevant information such as the country's name, flag, capital city, currency, language, and continent, enhancing the user experience with a seamless integration of map and data functionalities.
 
@@ -15,25 +10,23 @@ Esta aplicação Vue.js oferece um mapa interativo na página principal, utiliza
 
 Este projeto utiliza o template Vue Black Dashboard, que está licenciado sob a Licença Creative Tim. O template foi utilizado de acordo com os termos e condições de licenciamento, garantindo total conformidade com os direitos e regulamentos de propriedade intelectual.
 
-**Vue Black Dashboard** is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing. If you are looking for a tool to manage and visualize data about your business, this dashboard is the thing for you. It combines colors that are easy on the eye, spacious cards, beautiful typography, and graphics.
-
-**Vue Black Dashboard** comes packed with all plugins that you might need inside a project and documentation on how to get started. It is light and easy to use, and also very powerful.
-
-Vue Black Dashboard features over 16 individual components, giving you the freedom of choosing and combining. This means that there are thousands of possible combinations. All components can take variations in color, that you can easily modify using SASS files. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
-We thought about everything, so this dashboard comes with 2 versions, Dark Mode and Light Mode.
-
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
-- [Documentation](#documentation)
 - [File Structure](#file-structure)
-- [Browser Support](#browser-support)
 - [Licensing](#licensing)
 
 ## Quick start
-
+**(EN)**
 - Clone the repo: `git clone https://github.com/davichamma/MapVue`.
+- Build your docker container: `docker-compose build`.
+- Run your docker container: `docker-compose up`.
+
+**(PT-BR)**
+- Clone o repositório: `git clone https://github.com/davichamma/MapVue`.
+- Contrua o docker container: `docker-compose build`.
+- Rode o docker container: `docker-compose up`.
 
 ## Documentation
 
@@ -147,11 +140,6 @@ Within the download you'll find the following directories and files:
 
 ```
 
-## Browser Support
-
-At present, we officially aim to support the last two versions of the following browsers:
-
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
 
 ## Licensing
 

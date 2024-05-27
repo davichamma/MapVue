@@ -5,9 +5,16 @@
     <card type="plain" title="Google Maps">
       <div id="map" class="map-container"></div>
       <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+      <div class="switch__container">
+        <input id="switch-shadow" class="switch switch--shadow" type="checkbox" v-model="addPersonalMarkers">
+        <label for="switch-shadow"></label>
+        <span>Ativar Marcadores Pessoais</span>
+      </div>
     </card>
   </div>
 </template>
+
+
 
 <script>
 import axios from 'axios';
@@ -19,6 +26,8 @@ export default {
       countryData: null,
       selectedMarkers: [],
       polyline: null,
+      userMarkers: [],
+      addPersonalMarkers: false,
     };
   },
   methods: {
@@ -101,6 +110,16 @@ export default {
       };
       //declare map
       this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      // Evento de clique no mapa para adicionar novos marcadores
+      this.map.addListener('click', (event) => {
+        if (this.addPersonalMarkers) {
+          this.addUserMarker(event.latLng);
+        }
+      });
+
+      // Carrega os marcadores do LocalStorage
+      this.loadUserMarkers();
+
       //set searchbox
       const input = document.getElementById("pac-input");
       const searchBox = new google.maps.places.SearchBox(input);
@@ -169,6 +188,30 @@ export default {
       //add the polyline to the map
       this.polyline.setMap(this.map);
     },
+    // adiciona novos marcadores ao clicar no mapa
+    addUserMarker(location) {
+      const marker = new google.maps.Marker({
+        position: location,
+        map: this.map,
+      });
+
+      // Salva o marcador no LocalStorage
+      this.userMarkers.push(location);
+      localStorage.setItem('userMarkers', JSON.stringify(this.userMarkers));
+    },
+    // carrega os marcadores do LocalStorage
+    loadUserMarkers() {
+      const savedMarkers = JSON.parse(localStorage.getItem('userMarkers'));
+      if (savedMarkers) {
+        this.userMarkers = savedMarkers;
+        this.userMarkers.forEach(location => {
+          new google.maps.Marker({
+            position: location,
+            map: this.map,
+          });
+        });
+      }
+    },
     disableRTL() {
       if (!this.$rtl.isRTL) {
         this.$rtl.disableRTL();
@@ -188,13 +231,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .map-container {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 500px;
-
 }
 
 #pac-input {
@@ -204,4 +246,84 @@ export default {
   width: 300px;
   margin-top: 9px;
 }
+
+/* Estilo do contêiner do switch */
+.switch__container {
+  position: absolute;
+  bottom: -40px; /* Ajuste a posição conforme necessário */
+  left: 10px; /* Ajuste a posição conforme necessário */
+  display: flex;
+  align-items: center;
+  color: #FFF;
+}
+
+/* Estilo do switch */
+.switch {
+  visibility: hidden;
+  position: absolute;
+  margin-left: -9999px;
+}
+
+.switch + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  width: 60px;
+  height: 34px;
+  background-color: #dddddd;
+  border-radius: 34px;
+  transition: background 0.4s;
+  margin-right: 10px; /* Adiciona espaço entre o switch e o texto */
+}
+
+.switch + label:before{
+  right: 1px;
+  background-color: #f1f1f1;
+  border-radius: 60px;
+  transition: background 0.4s;
+}
+.switch + label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+
+.switch + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #fff;
+  border-radius: 34px;
+  transition: background 0.4s;
+}
+
+.switch + label:after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 26px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+
+.switch:checked + label {
+  background-color: #8ce196;
+}
+
+.switch:checked + label:after {
+  transform: translateX(26px);
+}
+
+/* Estilo da label de texto */
+.switch__container span {
+  font-size: 16px;
+  color: #FFF;
+  white-space: nowrap;
+}
+
 </style>

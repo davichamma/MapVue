@@ -48,7 +48,7 @@ export default {
         const { latlng, capitalInfo, flags, name, capital, currencies, languages, continents } = country;
         //handle missing information with an exit
         if (!capitalInfo || !capitalInfo.latlng) return;
-        //use google1s method to set the marker
+        //use google's method to set the marker
         const marker = new google.maps.Marker({
           //set the marker on the capital latlng
           position: { lat: capitalInfo.latlng[0], lng: capitalInfo.latlng[1] },
@@ -98,7 +98,7 @@ export default {
       });
       this.map.fitBounds(bounds);
     },
-    //maps pai configuration
+    //maps api configuration
     initAutocomplete() {
       const myLatlng = new google.maps.LatLng(40.748817, -73.985428);
       const mapOptions = {
@@ -110,14 +110,14 @@ export default {
       };
       //declare map
       this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-      // Evento de clique no mapa para adicionar novos marcadores
+      // add new markers to whenever the user clicks on the map
       this.map.addListener('click', (event) => {
         if (this.addPersonalMarkers) {
           this.addUserMarker(event.latLng);
         }
       });
 
-      // Carrega os marcadores do LocalStorage
+      // load the local storage markers
       this.loadUserMarkers();
 
       //set searchbox
@@ -188,18 +188,18 @@ export default {
       //add the polyline to the map
       this.polyline.setMap(this.map);
     },
-    // adiciona novos marcadores ao clicar no mapa
+    // add new markers to the map
     addUserMarker(location) {
       const marker = new google.maps.Marker({
         position: location,
         map: this.map,
       });
 
-      // Salva o marcador no LocalStorage
+      // save the marker on local storage
       this.userMarkers.push(location);
       localStorage.setItem('userMarkers', JSON.stringify(this.userMarkers));
     },
-    // carrega os marcadores do LocalStorage
+    // load the markers from local storage
     loadUserMarkers() {
       const savedMarkers = JSON.parse(localStorage.getItem('userMarkers'));
       if (savedMarkers) {
@@ -247,17 +247,14 @@ export default {
   margin-top: 9px;
 }
 
-/* Estilo do contêiner do switch */
 .switch__container {
   position: absolute;
-  bottom: -40px; /* Ajuste a posição conforme necessário */
-  left: 10px; /* Ajuste a posição conforme necessário */
+  bottom: -40px; /* position */
+  left: 10px; /* position */
   display: flex;
   align-items: center;
   color: #FFF;
 }
-
-/* Estilo do switch */
 .switch {
   visibility: hidden;
   position: absolute;
@@ -275,7 +272,7 @@ export default {
   background-color: #dddddd;
   border-radius: 34px;
   transition: background 0.4s;
-  margin-right: 10px; /* Adiciona espaço entre o switch e o texto */
+  margin-right: 10px; /* space between button and text */
 }
 
 .switch + label:before{
@@ -319,7 +316,6 @@ export default {
   transform: translateX(26px);
 }
 
-/* Estilo da label de texto */
 .switch__container span {
   font-size: 16px;
   color: #FFF;

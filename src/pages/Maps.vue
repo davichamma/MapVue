@@ -17,6 +17,8 @@ export default {
     return {
       map: null,
       countryData: null,
+      selectedMarkers: [],
+      polyline: null,
     };
   },
   methods: {
@@ -60,7 +62,27 @@ export default {
         });
         //open infoWindow whenever maker is clicked
         marker.addListener('click', () => {
-          infoWindow.open(this.map, marker);
+          if (!infoWindow.getMap()) {
+            infoWindow.open(this.map, marker);
+          }
+        });
+
+        //listen when a infowindow is closed so we dont trace a rout to it
+        infoWindow.addListener('closeclick', () => {
+          const index = this.selectedMarkers.indexOf(marker.getPosition());
+          if (index > -1) {
+            this.selectedMarkers.splice(index, 1);
+            //draw the line
+            this.updatePolyline();
+          }
+        });
+
+
+        infoWindow.addListener('domready', () => {
+          if (!this.selectedMarkers.includes(marker.getPosition())) {
+            this.selectedMarkers.push(marker.getPosition());
+            this.updatePolyline();
+          }
         });
 
         bounds.extend(marker.getPosition());
@@ -119,7 +141,7 @@ export default {
             scaledSize: new google.maps.Size(25, 25),
           };
 
-          await this.fetchCountryData(place.name); 
+          await this.fetchCountryData(place.name);
           // Adjust the map's viewport to fit the new place
           if (place.geometry.viewport) {
             bounds.union(place.geometry.viewport);
@@ -129,6 +151,23 @@ export default {
         }
         this.map.fitBounds(bounds);
       });
+    },
+    //trace the route between the markers on the map
+    updatePolyline() {
+      if (this.polyline) {
+        //check if there is already a polyline
+        this.polyline.setMap(null);
+      }
+      //create a new polyline based on the markers selected with infowindow
+      this.polyline = new google.maps.Polyline({
+        path: this.selectedMarkers,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+      });
+      //add the polyline to the map
+      this.polyline.setMap(this.map);
     },
     disableRTL() {
       if (!this.$rtl.isRTL) {
@@ -144,7 +183,7 @@ export default {
     this.$watch("$route", this.disableRTL, { immediate: true });
     this.$watch("$sidebar.showSidebar", this.toggleNavOpen);
     // Initialize the autocomplete functionality when the component is mounted
-    this.initAutocomplete(); 
+    this.initAutocomplete();
   },
 };
 </script>
@@ -155,55 +194,14 @@ export default {
   width: 100%;
   height: 100%;
   min-height: 500px;
-  
+
 }
 
 #pac-input {
   border-radius: 10px;
-  /* Bordas arredondadas */
   padding: 10px;
-  /* Espaçamento interno */
   font-size: 16px;
-  /* Tamanho da fonte */
   width: 300px;
-  /* Largura */
   margin-top: 9px;
-}
-
-/* Estilos para a lista de sugestões */
-.pac-container {
-  background-color: #000F20 !important;
-  /* Cor de fundo */
-  color: #0EC9AC !important;
-  /* Cor das letras */
-  border-radius: 10px !important;
-  /* Bordas arredondadas */
-  border: 2px solid #663399 !important;
-  /* Cor da borda */
-  z-index: 1051 !important;
-  /* Certifique-se de que a lista de sugestões esteja acima de outros elementos */
-}
-
-/* Estilos para os itens da lista de sugestões */
-.pac-item {
-  background-color: #000F20 !important;
-  /* Cor de fundo */
-  color: #0EC9AC !important;
-  /* Cor das letras */
-}
-
-.pac-item:hover {
-  background-color: #663399 !important;
-  /* Cor de fundo ao passar o mouse */
-}
-
-.pac-item-query {
-  color: #0EC9AC !important;
-  /* Cor das letras */
-}
-
-.gm-style-iw-d {
-  overflow: auto !important;
-  max-height: 314px;
 }
 </style>

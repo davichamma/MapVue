@@ -3,12 +3,12 @@
 **(EN)**
 This Vue.js application provides an interactive map on the main page, utilizing the Google Maps API to search for countries and the REST Countries API to fetch detailed information about the searched countries. The application features a minimalist design and leverages Advanced Markers to display search results on the map, along with a SearchBox to enable users to search for specific locations. When a country is selected, the application retrieves and displays relevant information such as the country's name, flag, capital city, currency, language, and continent, enhancing the user experience with a seamless integration of map and data functionalities.
 
-This project uses the Vue Black Dashboard template, which is licensed under the Creative Tim License. The template has been used in accordance with the licensing terms and conditions, ensuring full compliance with intellectual property rights and regulations.
+This project uses the Vue Black Dashboard template, which is licensed under the MIT License. The template has been used in accordance with the licensing terms and conditions, ensuring full compliance with intellectual property rights and regulations.
 
 **(PT-BR)**
 Esta aplicação Vue.js oferece um mapa interativo na página principal, utilizando a API do Google Maps para buscar países e a API REST Countries para obter informações detalhadas sobre os países pesquisados. A aplicação apresenta um design minimalista e utiliza Advanced Markers para exibir os resultados da pesquisa no mapa, juntamente com uma SearchBox que permite aos usuários buscar localidades específicas. Quando um país é selecionado, a aplicação recupera e exibe informações relevantes, como o nome do país, bandeira, capital, moeda, idioma e continente, aprimorando a experiência do usuário com uma integração perfeita entre funcionalidades de mapa e dados.
 
-Este projeto utiliza o template Vue Black Dashboard, que está licenciado sob a Licença Creative Tim. O template foi utilizado de acordo com os termos e condições de licenciamento, garantindo total conformidade com os direitos e regulamentos de propriedade intelectual.
+Este projeto utiliza o template Vue Black Dashboard, que está licenciado sob a Licença MIT. O template foi utilizado de acordo com os termos e condições de licenciamento, garantindo total conformidade com os direitos e regulamentos de propriedade intelectual.
 
 
 ## Table of Contents

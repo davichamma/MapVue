@@ -39,12 +39,7 @@
       <collapse-transition>
         <div class="collapse navbar-collapse show" v-show="showMenu">
           <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-            <div
-              class="search-bar input-group"
-              @click="searchModalVisible = true"
-            >
-              <!-- <input type="text" class="form-control" placeholder="Search...">
-              <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div> -->
+            <div class="search-bar input-group" @click="searchModalVisible = true">
               <button
                 class="btn btn-link"
                 id="search-button"
@@ -53,7 +48,6 @@
               >
                 <i class="tim-icons icon-zoom-split"></i>
               </button>
-              <!-- You can choose types of search input -->
             </div>
             <modal
               :show.sync="searchModalVisible"
@@ -69,7 +63,20 @@
                 class="form-control"
                 id="inlineFormInputGroup"
                 placeholder="SEARCH"
+                @input="updateSuggestions"
+                @focus="showSuggestions = true"
+                @blur="hideSuggestions"
+                autocomplete="off"
               />
+              <ul v-if="showSuggestions && suggestions.length" class="autocomplete-suggestions">
+                <li
+                  v-for="suggestion in suggestions"
+                  :key="suggestion"
+                  @mousedown.prevent="selectSuggestion(suggestion)"
+                >
+                  {{ suggestion }}
+                </li>
+              </ul>
             </modal>
             <base-dropdown
               tag="li"
@@ -133,14 +140,11 @@
                 <p class="d-lg-none">Log out</p>
               </a>
               <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Profile</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Settings</a>
+                <a href="#" class="nav-item dropdown-item" @click="navigateToProfile">Profile</a>
               </li>
               <div class="dropdown-divider"></div>
               <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Log out</a>
+                <a href="#" class="nav-item dropdown-item">Log out (prop)</a>
               </li>
             </base-dropdown>
           </ul>
@@ -149,6 +153,7 @@
     </div>
   </nav>
 </template>
+
 <script>
 import { CollapseTransition } from "vue2-transitions";
 import Modal from "@/components/Modal";
@@ -173,6 +178,8 @@ export default {
       showMenu: false,
       searchModalVisible: false,
       searchQuery: "",
+      suggestions: [],
+      showSuggestions: false,
     };
   },
   methods: {
@@ -194,7 +201,58 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu;
     },
+    updateSuggestions() {
+      const pages = ['maps', 'profile'];
+      this.suggestions = pages.filter(page => page.includes(this.searchQuery.toLowerCase()) && page !== this.$route.name);
+    },
+    selectSuggestion(suggestion) {
+      this.searchQuery = suggestion;
+      this.showSuggestions = false;
+      this.navigateToPage();
+    },
+    navigateToPage() {
+      if (this.searchQuery && this.searchQuery !== this.$route.name) {
+        this.$router.push({ name: this.searchQuery });
+        this.searchQuery = '';
+        this.suggestions = [];
+      }
+    },
+    hideSuggestions() {
+      // Delay hiding to allow click events to be registered
+      setTimeout(() => {
+        this.showSuggestions = false;
+      }, 200);
+    },
+    navigateToProfile() {
+      if (this.$route.name !== 'profile') {
+        this.$router.push({ name: 'profile' });
+      }
+    },
   },
 };
 </script>
-<style></style>
+
+<style scoped>
+
+.autocomplete-suggestions {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: calc(100% - 2px); 
+  left: 0;
+}
+
+.autocomplete-suggestions li {
+  padding: 10px;
+  cursor: pointer;
+  color: #7D8290; 
+}
+
+.autocomplete-suggestions li:hover {
+  background: #f0f0f0;
+}
+</style>
